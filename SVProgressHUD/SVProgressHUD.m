@@ -314,10 +314,14 @@ static SVProgressHUD *sharedView = nil;
         self.progressBarView.hidden = NO;
     }
     
-    if(self.maskType != SVProgressHUDMaskTypeNone)
+    if(self.maskType != SVProgressHUDMaskTypeNone) {
         self.userInteractionEnabled = YES;
-    else
+        self.overlayWindow.userInteractionEnabled = YES;
+    }
+    else {
         self.userInteractionEnabled = NO;
+        self.overlayWindow.userInteractionEnabled = NO;
+    }
 
     [self.overlayWindow makeKeyAndVisible];
     [self positionHUD:nil];
@@ -485,10 +489,14 @@ static SVProgressHUD *sharedView = nil;
 	[self setStatus:string];
 	[self.spinnerView startAnimating];
     
-    if(self.maskType != SVProgressHUDMaskTypeNone)
+    if(self.maskType != SVProgressHUDMaskTypeNone) {
         self.userInteractionEnabled = YES;
-    else
+        self.overlayWindow.userInteractionEnabled = YES;
+    }
+    else {
         self.userInteractionEnabled = NO;
+        self.overlayWindow.userInteractionEnabled = NO;
+    }
     
     [self.overlayWindow makeKeyAndVisible];
     [self positionHUD:nil];
@@ -697,6 +705,8 @@ static SVProgressHUD *sharedView = nil;
 }
 
 - (void)setProgress:(CGFloat)newProgress {
+    if (newProgress < 0.0) newProgress = 0.0;
+    if (newProgress > 1.0) newProgress = 1.0;
     progress = newProgress;
     [self setNeedsDisplay];
 }
@@ -726,7 +736,13 @@ static SVProgressHUD *sharedView = nil;
     // draw the actual bar
     radius = 5;
     rrect = CGRectInset(rrect, 3, 3);
-    rrect.size.width = rrect.size.width * (progress == 0.0 || progress >= 0.055 ? progress : 0.055); // progress bar looks funny for values > 0 but less than 0.055
+    
+    CGFloat val = 0.055;
+    if ([[UIScreen mainScreen] scale] == 2)
+        val = 0.07;
+    
+    rrect.size.width = rrect.size.width * (progress == 0.0 || progress >= val ? progress : val); // progress bar looks funny for values > 0 but less than certain values
+    
     minx = CGRectGetMinX(rrect), midx = CGRectGetMidX(rrect), maxx = CGRectGetMaxX(rrect);
     miny = CGRectGetMinY(rrect), midy = CGRectGetMidY(rrect), maxy = CGRectGetMaxY(rrect);
     CGContextMoveToPoint(ctx, minx, midy);
