@@ -42,6 +42,9 @@ typedef NSUInteger SVProgressHUDIndicatorType;
 + (void)showWithMaskType:(SVProgressHUDMaskType)maskType;
 + (void)showWithMaskType:(SVProgressHUDMaskType)maskType networkIndicator:(BOOL)show;
 
++ (void)showWithStatus:(NSString*)status indicatorType:(SVProgressHUDIndicatorType)indicatorType networkIndicator:(BOOL)show;
+
+
 + (void)showSuccessWithStatus:(NSString*)string;
 + (void)setStatus:(NSString*)string; // change the HUD loading status while it's showing
 

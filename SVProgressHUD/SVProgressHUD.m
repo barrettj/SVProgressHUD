@@ -117,7 +117,7 @@ static SVProgressHUD *sharedView = nil;
 }
 
 + (void)showWithStatus:(NSString *)status networkIndicator:(BOOL)show {
-    [SVProgressHUD showWithStatus:status maskType:SVProgressHUDMaskTypeNone networkIndicator:show];
+    [SVProgressHUD showWithStatus:status maskType:SVProgressHUDMaskTypeGradient networkIndicator:show];
 }
 
 + (void)showWithMaskType:(SVProgressHUDMaskType)maskType networkIndicator:(BOOL)show {
@@ -131,6 +131,11 @@ static SVProgressHUD *sharedView = nil;
 + (void)showWithStatus:(NSString*)status maskType:(SVProgressHUDMaskType)maskType indicatorType:(SVProgressHUDIndicatorType)indicatorType networkIndicator:(BOOL)show {
     [[SVProgressHUD sharedView] showWithStatus:status maskType:maskType indicatorType:indicatorType networkIndicator:show];
 }
+
++ (void)showWithStatus:(NSString*)status indicatorType:(SVProgressHUDIndicatorType)indicatorType networkIndicator:(BOOL)show {
+    [[SVProgressHUD sharedView] showWithStatus:status maskType:SVProgressHUDMaskTypeGradient indicatorType:indicatorType networkIndicator:show];
+}
+
 
 + (void)showSuccessWithStatus:(NSString *)string {
     [SVProgressHUD show];
