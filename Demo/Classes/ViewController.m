@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "SVProgressHUD.h"
+#import "NSArray+SVProgressHUD.h"
 
 @implementation ViewController
 
@@ -31,6 +32,20 @@
     progress = 0.0f;
     [SVProgressHUD setProgress:progress];
 	[SVProgressHUD showWithStatus:@"Progressing" maskType:SVProgressHUDMaskTypeNone indicatorType:SVProgressHUDIndicatorTypeProgressBar networkIndicator:NO];
+}
+
+- (IBAction)showWhileEnumeratingObjects:(id)sender {
+    // Make a load of objects
+    int numOfObjects = 10000;
+    NSMutableArray *objects = [NSMutableArray array];
+    for (int i = 0; i < numOfObjects; i++) {
+        [objects addObject:@(i)];
+    }
+    
+    // Enumerate over them and show a SVProgressHUDIndicatorTypeProgressBar SVProgressHUD to show the progress
+    [objects enumerateObjectsWithSVProgressHUDUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSLog(@"%@", obj);
+    }];
 }
 
 
