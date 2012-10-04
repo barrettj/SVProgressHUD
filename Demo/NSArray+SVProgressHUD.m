@@ -12,8 +12,8 @@
 @implementation NSArray (SVProgressHUD)
 
 /*
- Enumerates through an NSArray using enumerateObjectsUsingBlock: method,
- and updates an SVProgressHUDIndicatorTypeProgressBar SVProgressHUD as each object is iterated over.
+    Enumerates through an NSArray using enumerateObjectsUsingBlock: method,
+    and updates an SVProgressHUDIndicatorTypeProgressBar SVProgressHUD as each object is iterated over.
  */
 - (void)enumerateObjectsWithSVProgressHUDUsingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block {
     // Setup SVProgressHUD with type SVProgressHUDIndicatorTypeProgressBar
