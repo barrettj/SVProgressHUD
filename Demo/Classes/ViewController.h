@@ -15,6 +15,7 @@
 - (IBAction)show;
 - (IBAction)showWithStatus;
 - (IBAction)showWithProgress:(id)sender;
+- (IBAction)showWhileEnumeratingObjects:(id)sender;
 
 - (IBAction)dismiss;
 - (IBAction)dismissSuccess;
