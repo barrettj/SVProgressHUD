@@ -21,6 +21,11 @@
 #define SVProgressHUDShowNetworkIndicator 1
 #endif
 
+#if __IPHONE_OS_VERSION_MAX_ALLOWED < 60000
+#define NSTextAlignmentCenter       UITextAlignmentCenter
+#endif
+
+
 @interface SVProgressHUD ()
 
 @property (nonatomic, readwrite) SVProgressHUDMaskType maskType;
@@ -617,7 +622,7 @@ static SVProgressHUD *sharedView = nil;
 		stringLabel.textColor = [UIColor whiteColor];
 		stringLabel.backgroundColor = [UIColor clearColor];
 		stringLabel.adjustsFontSizeToFitWidth = YES;
-		stringLabel.textAlignment = UITextAlignmentCenter;
+		stringLabel.textAlignment = NSTextAlignmentCenter;
 		stringLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
 		stringLabel.font = [UIFont boldSystemFontOfSize:16];
 		stringLabel.shadowColor = [UIColor blackColor];
