@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'SVProgressHUD-BJ'
-  s.version  = '0.7'
+  s.version  = '1.0.0'
   s.platform = :ios
   s.license  = 'MIT'
   s.summary  = 'A clean and lightweight progress HUD for your iOS app.'
@@ -14,7 +14,6 @@ Pod::Spec.new do |s|
                   'Tweetie for iOS. The success and error icons are from Glyphish.'
 
   s.source_files = 'SVProgressHUD/*.{h,m}'
-  #s.clean_paths  = 'Demo'
   s.framework    = 'QuartzCore'
   s.resources    = 'SVProgressHUD/SVProgressHUD.bundle'
 end
