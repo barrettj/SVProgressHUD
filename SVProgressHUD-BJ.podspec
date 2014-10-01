@@ -1,12 +1,12 @@
 Pod::Spec.new do |s|
   s.name     = 'SVProgressHUD-BJ'
-  s.version  = '1.0.0'
+  s.version  = '1.0.1'
   s.platform = :ios
   s.license  = 'MIT'
   s.summary  = 'A clean and lightweight progress HUD for your iOS app.'
   s.homepage = 'http://samvermette.com/199'
   s.author   = { 'Sam Vermette' => 'hello@samvermette.com' }
-  s.source   = { :git => 'https://github.com/barrettj/SVProgressHUD.git', :tag => "1.0.0" }
+  s.source   = { :git => 'https://github.com/barrettj/SVProgressHUD.git', :tag => "1.0.1" }
 
   s.description = 'SVProgressHUD is an easy-to-use, clean and lightweight progress HUD for iOS. ' \
                   'It’s a simplified and prettified alternative to the popular MBProgressHUD. '  \
@@ -16,4 +16,5 @@ Pod::Spec.new do |s|
   s.source_files = 'SVProgressHUD/*.{h,m}'
   s.framework    = 'QuartzCore'
   s.resources    = 'SVProgressHUD/SVProgressHUD.bundle'
+  s.requires_arc = false
 end
