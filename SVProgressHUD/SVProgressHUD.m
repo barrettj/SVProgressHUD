@@ -417,7 +417,7 @@ static SVProgressHUD *sharedView = nil;
     CGRect orientationFrame = [UIScreen mainScreen].bounds;
     CGRect statusBarFrame = [UIApplication sharedApplication].statusBarFrame;
     
-    if(UIInterfaceOrientationIsLandscape(orientation)) {
+    if(UIInterfaceOrientationIsLandscape(orientation) && orientationFrame.size.width < orientationFrame.size.height) {
         float temp = orientationFrame.size.width;
         orientationFrame.size.width = orientationFrame.size.height;
         orientationFrame.size.height = temp;
