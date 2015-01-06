@@ -458,6 +458,13 @@ static SVProgressHUD *sharedView = nil;
             break;
     } 
     
+    if ([[[UIDevice currentDevice] systemVersion] compare:@"8.0" options:NSNumericSearch] == NSOrderedDescending){
+        if(UIInterfaceOrientationIsLandscape(orientation)) {
+            newCenter = CGPointMake(newCenter.y, newCenter.x);
+        }
+        rotateAngle = 0;
+    }
+    
     if(notification) {
         [UIView animateWithDuration:animationDuration 
                               delay:0 
@@ -474,7 +481,7 @@ static SVProgressHUD *sharedView = nil;
 }
 
 - (void)moveToPoint:(CGPoint)newCenter rotateAngle:(CGFloat)angle {
-    self.hudView.transform = CGAffineTransformMakeRotation(angle); 
+    self.hudView.transform = CGAffineTransformMakeRotation(angle);
     self.hudView.center = newCenter;
 }
 
@@ -600,6 +607,11 @@ static SVProgressHUD *sharedView = nil;
         overlayWindow.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         overlayWindow.backgroundColor = [UIColor clearColor];
         overlayWindow.userInteractionEnabled = NO;
+        
+        if ([[[UIDevice currentDevice] systemVersion] compare:@"8.0" options:NSNumericSearch] == NSOrderedDescending){
+            UIViewController *temp = [UIViewController new];
+            overlayWindow.rootViewController = temp;
+        }
     }
     return overlayWindow;
 }
